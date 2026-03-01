@@ -1,167 +1,144 @@
-# Loan Approval Prediction
+# 💰 Loan Approval Prediction System
 
-Machine Learning model to predict loan approval status.
+Machine Learning powered web application that predicts loan approval status using **XGBoost** and is deployed live using **Streamlit Cloud**.
 
-## Tech Stack
-- Python
-- Pandas
-- Scikit-learn
-- XGBoost
+---
 
-💰 Loan Approval Prediction System
+## 🚀 Live Demo
 
-Machine Learning powered web application that predicts loan approval status using XGBoost and is deployed live using Streamlit Cloud.
+🔗 **Live App:**  
+https://your-streamlit-app-url.streamlit.app  
 
-🚀 Live Demo
+---
 
-👉 Live App:
-https://say-adeeb-loan-approval-ml-srcapp-imnvsk.streamlit.app/
-
-
-📌 Project Overview
+## 📌 Project Overview
 
 This project is an end-to-end Machine Learning system that:
 
-Trains multiple classification models
+- Trains multiple classification models  
+- Selects the best-performing model (XGBoost)  
+- Saves the trained model using `joblib`  
+- Deploys the model using Streamlit  
+- Displays prediction confidence  
+- Visualizes top feature importance  
+- Supports dark mode UI  
 
-Selects the best-performing model (XGBoost)
+---
 
-Saves the trained model using joblib
-
-Deploys the model using Streamlit
-
-Displays prediction confidence
-
-Visualizes top feature importance
-
-Supports dark mode UI
-
-🧠 Problem Statement
+## 🧠 Problem Statement
 
 Financial institutions need a reliable way to determine whether a loan applicant should be approved based on:
 
-Demographics
-
-Financial status
-
-Credit history
-
-Loan intent
+- Demographics  
+- Financial status  
+- Credit history  
+- Loan intent  
 
 This application predicts loan approval based on applicant details.
 
-⚙️ Tech Stack
+---
 
-Python
+## ⚙️ Tech Stack
 
-Pandas
+- Python  
+- Pandas  
+- NumPy  
+- Scikit-learn  
+- XGBoost  
+- Streamlit  
+- Matplotlib  
+- Joblib  
 
-NumPy
+---
 
-Scikit-learn
+## 🏗 Project Structure
 
-XGBoost
-
-Streamlit
-
-Matplotlib
-
-Joblib
-
-🏗 Project Structure
+```
 loan-approval-ml/
 │
 ├── data/
-│   └── loan_data.csv
-│
 ├── models/
-│   ├── model.pkl
-│   └── columns.pkl
-│
 ├── src/
+│   ├── __init__.py
 │   ├── app.py
 │   ├── predict.py
 │   └── train.py
 │
-├── requirements.txt
-└── README.md
-🔍 Features
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
 
--> Predict loan approval (Approved / Rejected)
--> Display prediction confidence (%)
--> Progress bar visualization
--> Top 10 Feature Importance chart
--> Clean and professional UI
--> Fully deployed on Streamlit Cloud
+---
 
-📊 Model Training
+## 🔍 Features
+
+-> Predict loan approval (Approved / Rejected)  
+-> Display prediction confidence (%)  
+-> Progress bar visualization  
+-> Top 10 Feature Importance chart  
+-> Dark mode toggle  
+-> Clean and professional UI  
+-> Fully deployed on Streamlit Cloud  
+
+---
+
+## 📊 Model Training
 
 Models trained and evaluated:
 
-Decision Tree
-
-Random Forest
-
-Logistic Regression
-
-XGBoost (Selected Best Model)
+- Decision Tree  
+- Random Forest  
+- Logistic Regression  
+- XGBoost (Selected Best Model)  
 
 Evaluation Metrics Used:
 
-Accuracy
+- Accuracy  
+- Precision  
+- Recall  
+- F1 Score  
 
-Precision
+---
 
-Recall
+## How to Run Locally
 
-F1 Score
+### 1️. Clone the repository
 
-XGBoost was selected based on overall performance.
-
-📈 Feature Importance
-
-The app dynamically displays the top 10 most important features influencing loan approval decisions.
-
-This enhances model interpretability and transparency.
-
-🖥 How to Run Locally
-1️⃣ Clone the repository
+```bash
 git clone https://github.com/yourusername/loan-approval-ml.git
 cd loan-approval-ml
-2️⃣ Install dependencies
+```
+
+### 2️. Install dependencies
+
+```bash
 pip install -r requirements.txt
-3️⃣ Run the app
+```
+
+### 3️. Run the app
+
+```bash
 streamlit run src/app.py
-🌍 Deployment
+```
 
-This project is deployed using:
+---
 
-Streamlit Cloud
+## 🌍 Deployment
 
-Deployment steps:
+This project is deployed using **Streamlit Cloud**.
 
-Push project to GitHub
+Steps:
+1. Push project to GitHub  
+2. Connect repo to Streamlit Cloud  
+3. Deploy using `src/app.py`  
 
-Connect repo to Streamlit Cloud
+---
 
-Deploy using src/app.py
+## 👨‍💻 Author
 
-🎯 Key Learnings
-
-Model serialization using joblib
-
-Handling feature alignment in deployment
-
-Managing relative paths in cloud deployment
-
-Creating interactive ML dashboards
-
-Git & GitHub version control
-
-Production-ready project structuring
-
-👨‍💻 Author
-
-Syed Adeeb
+**Syed Adeeb**
 
 Built with focus on real-world ML deployment and production-ready structure.
+
+---
