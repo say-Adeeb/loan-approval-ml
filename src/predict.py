@@ -1,15 +1,15 @@
 import joblib
 import pandas as pd
-import os
+from pathlib import Path
 
 # Load saved model and column structure
 
 # Get project root directory
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Build correct paths
-model_path = os.path.join(BASE_DIR, "models", "model.pkl")
-columns_path = os.path.join(BASE_DIR, "models", "columns.pkl")
+model_path = BASE_DIR / "models" / "model.pkl"
+columns_path = BASE_DIR / "models" / "columns.pkl"
 
 # Load saved model and columns
 model = joblib.load(model_path)
