@@ -7,8 +7,7 @@ Machine Learning powered web application that predicts loan approval status usin
 ## 🚀 Live Demo
 
 🔗 **Live App:**  
-https://your-streamlit-app-url.streamlit.app  
-
+https://say-adeeb-loan-approval-ml-srcapp-imnvsk.streamlit.app/
 ---
 
 ## 📌 Project Overview
@@ -106,7 +105,7 @@ Evaluation Metrics Used:
 ### 1️. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/loan-approval-ml.git
+git clone https://github.com/say-Adeeb/loan-approval-ml.git
 cd loan-approval-ml
 ```
 
