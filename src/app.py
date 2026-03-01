@@ -6,18 +6,35 @@
 
 #web-based inference interface built with Streamlit
 #enables real-time loan approval prediction using trained ML models
-
 import streamlit as st
-from predict import predict
+import pandas as pd
+import matplotlib.pyplot as plt
+from predict import predict, model, columns
 
-# ---------------- PAGE CONFIG ---------------- #
+#PAGE CONFIG
 st.set_page_config(
     page_title="Loan Approval System",
     page_icon="💰",
     layout="centered"
 )
 
-# ---------------- HEADER ---------------- #
+#DARK MODE TOGGLE
+dark_mode = st.toggle("🌙 Dark Mode")
+
+if dark_mode:
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #0E1117;
+            color: white;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+#HEADER
 st.markdown("""
     <h1 style='text-align: center; color: #2E86C1;'>
     💰 Loan Approval Prediction System
@@ -32,7 +49,7 @@ Machine Learning based Loan Eligibility Prediction using XGBoost
 
 st.divider()
 
-# ---------------- INPUT SECTION ---------------- #
+#INPUT SECTION
 st.subheader("📋 Applicant Information")
 
 col1, col2 = st.columns(2)
@@ -75,7 +92,7 @@ with col4:
 
 st.divider()
 
-# ---------------- PREDICTION BUTTON ---------------- #
+#PREDICTION
 if st.button("🔍 Predict Loan Approval"):
 
     input_data = {
@@ -94,7 +111,9 @@ if st.button("🔍 Predict Loan Approval"):
         "previous_loan_defaults_on_file": previous_loan_defaults_on_file
     }
 
-    result = predict(input_data)
+    result, prob = predict(input_data)
+
+    confidence = round(prob * 100, 2)
 
     st.divider()
 
@@ -103,6 +122,26 @@ if st.button("🔍 Predict Loan Approval"):
     else:
         st.error("❌ Loan Rejected")
 
-# ---------------- FOOTER ---------------- #
+    st.progress(int(confidence))
+    st.write(f"Confidence: **{confidence}%**")
+
+    #FEATURE IMPORTANCE
+    st.subheader("📊 Top 10 Feature Importance")
+
+    importances = model.feature_importances_
+    feature_names = columns
+
+    importance_df = (
+        pd.DataFrame({"Feature": feature_names, "Importance": importances})
+        .sort_values(by="Importance", ascending=False)
+        .head(10)
+    )
+
+    fig, ax = plt.subplots()
+    ax.barh(importance_df["Feature"], importance_df["Importance"])
+    ax.invert_yaxis()
+    st.pyplot(fig)
+
+#FOOTER
 st.divider()
 st.caption("Built using XGBoost & Streamlit | Developed by Syed Adeeb")

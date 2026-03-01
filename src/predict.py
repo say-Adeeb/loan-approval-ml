@@ -18,10 +18,8 @@ columns = joblib.load(columns_path)
 
 def predict(input_dict):
 
-    # Convert input to DataFrame
     df = pd.DataFrame([input_dict])
 
-    # Ordinal encoding (same as train.py)
     df['person_education'] = df['person_education'].map({
         'Doctorate': 5,
         'Master': 4,
@@ -35,13 +33,10 @@ def predict(input_dict):
         'No': 0
     })
 
-    # One hot encoding
     df = pd.get_dummies(df)
-
-    # Match training columns
     df = df.reindex(columns=columns, fill_value=0)
 
-    # Predict
-    prediction = model.predict(df)
+    prediction = model.predict(df)[0]
+    probability = model.predict_proba(df)[0][1]  # confidence for class 1
 
-    return prediction[0]
+    return prediction, probability
